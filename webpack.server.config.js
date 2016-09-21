@@ -22,18 +22,6 @@ module.exports = {
   node: {
     __dirname: true
   },
-  module: {
-    loaders: [
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          loader: 'babel',
-          query: {
-            presets: ['es2015', 'node5']
-          }
-        }
-    ]
-  },
   externals: nodeModules,
   plugins: [
     new webpack.IgnorePlugin(/\.(css|less)$/),
