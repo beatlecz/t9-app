@@ -12,11 +12,11 @@ fs.readdirSync('node_modules')
   })
 
 module.exports = {
-  entry: './app.js',
+  entry: './server/app.js',
   target: 'node',
   output: {
     path: path.join(__dirname, 'build'),
-    publicPath: './',
+    publicPath: './server',
     filename: 'backend.js'
   },
   node: {

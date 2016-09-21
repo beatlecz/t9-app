@@ -7,6 +7,9 @@ import bodyParser from'body-parser'
 
 var app = express()
 
+// APP SETUP
+// =============================================================================
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 

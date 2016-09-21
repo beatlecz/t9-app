@@ -35,7 +35,7 @@ require("source-map-support").install();
 /******/ 	__webpack_require__.c = installedModules;
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "./";
+/******/ 	__webpack_require__.p = "./server";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -83,6 +83,9 @@ require("source-map-support").install();
 	
 	var app = (0, _express2.default)();
 	
+	// APP SETUP
+	// =============================================================================
+	
 	app.set('views', _path2.default.join(__dirname, 'views'));
 	app.set('view engine', 'pug');
 	
@@ -102,7 +105,7 @@ require("source-map-support").install();
 	var port = process.env.PORT || 8080; // set our port
 	app.listen(port);
 	console.log('Listening on port ' + port);
-	/* WEBPACK VAR INJECTION */}.call(exports, ""))
+	/* WEBPACK VAR INJECTION */}.call(exports, "server"))
 
 /***/ },
 /* 1 */
@@ -160,6 +163,12 @@ require("source-map-support").install();
 	
 	router.get('/', function (req, res, next) {
 	  res.json({ status: 'OK' });
+	});
+	
+	router.get('/convert', function (req, res, next) {
+	  res.json({
+	    result: []
+	  });
 	});
 	
 	exports.default = router;
