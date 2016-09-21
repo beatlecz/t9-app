@@ -16,7 +16,11 @@ module.exports = {
   target: 'node',
   output: {
     path: path.join(__dirname, 'build'),
+    publicPath: './',
     filename: 'backend.js'
+  },
+  node: {
+    __dirname: true
   },
   module: {
     loaders: [
@@ -25,7 +29,7 @@ module.exports = {
           exclude: /node_modules/,
           loader: 'babel',
           query: {
-            presets: ['es2015']
+            presets: ['es2015', 'node5']
           }
         }
     ]
