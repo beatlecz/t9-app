@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export function fetchWords(numStr) {
+export function fetchWords(numbers) {
   return new Promise((resolve, reject) => {
-    axios.get('/api/words', {numStr})
+    axios.get('/api/words', {params: {numbers}})
       .then(result => resolve(result.data.words))
   })
 }

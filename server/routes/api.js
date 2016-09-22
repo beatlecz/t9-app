@@ -6,6 +6,7 @@ router.get('/', function(req, res, next) {
 })
 
 router.get('/words', function(req, res, next) {
+  console.log(req.query)
   res.json({
     words: [
       'ab',

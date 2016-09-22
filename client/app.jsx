@@ -2,25 +2,30 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as Actions from './actions'
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+import InputForm from './components/inputForm'
+import WordsList from './components/wordsList'
+import Keyboard from './components/keyboard'
 
 class Main extends Component {
-
-  componentDidMount() {
-    let {fetchWords} = this.props
-
-    fetchWords('2345')
-  }
-
   render() {
+    let {isFetching, words, numbers} = this.props.app.toJS()
+    let {fetchWords, addNumber, clearNumbers} = this.props
 
-    let {isFetching, words} = this.props.appState.toJS()
-    
     return (
-      <div>
-        {isFetching}
-        <ul>
-          {words.map((w,i) => <li key={i}>{w}</li>)}
-        </ul>
+      <div className="container">
+        <h3>T9 App</h3>
+        <hr />
+        <div className="row">
+          <div className="col-lg-6">
+            <InputForm numbers={numbers} onClear={clearNumbers} />
+            <Keyboard onPress={addNumber} />
+          </div>
+          <div className="col-lg-6">
+            <WordsList words={words} />
+          </div>
+        </div>
       </div>
     )
   }
@@ -28,7 +33,7 @@ class Main extends Component {
 
 function mapStateToProps(state) {
     return {
-      appState: state.get('appState')
+      app: state.get('app')
     }
 }
 function mapDispatchToProps(dispatch) {

@@ -2,6 +2,21 @@ import {action} from '../modules/base-actions'
 import * as Api from './api'
 import AT from './action-types'
 
+export function addNumber(number) {
+  return (dispatch, getState) => {
+    dispatch(action(AT.ADD_NUMBER, {number}))
+
+    let {numbers} = getState().get('app').toJS()
+
+    dispatch(fetchWords(numbers.join('')))
+
+  }
+}
+
+export function clearNumbers() {
+  return action(AT.CLEAR_NUMBERS)
+}
+
 export function fetchWords(numStr) {
 
   return dispatch => {

@@ -3,11 +3,22 @@ import Immutable, {fromJS} from 'immutable'
 import AT from './action-types'
 
 const appInitState = fromJS({
-  words: ['test', 'fest'],
+  numbers: [],
+  words: [],
   isFetching: false
 })
 
-export const appState = createReducer(appInitState, {
+export const app = createReducer(appInitState, {
+
+  [AT.ADD_NUMBER]: (state, action) => {
+    return state.merge({
+      numbers: state.get('numbers').push(action.number)
+    })
+  },
+
+  [AT.CLEAR_NUMBERS]: (state, action) => state.merge({
+    numbers: fromJS([])
+  }),
 
   [AT.REQUEST_WORDS]: (state, action) => state.merge({
     isFetching: true
@@ -21,5 +32,5 @@ export const appState = createReducer(appInitState, {
 })
 
 export {
-  appState
+  app
 }

@@ -166,6 +166,7 @@ require("source-map-support").install();
 	});
 	
 	router.get('/words', function (req, res, next) {
+	  console.log(req.query);
 	  res.json({
 	    words: ['ab', 'be', 'cs', 'uk']
 	  });
