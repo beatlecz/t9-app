@@ -28560,7 +28560,8 @@
 	  });
 	}), _defineProperty(_createReducer, _actionTypes2.default.CLEAR_NUMBERS, function (state, action) {
 	  return state.merge({
-	    numbers: (0, _immutable.fromJS)([])
+	    numbers: (0, _immutable.fromJS)([]),
+	    words: (0, _immutable.fromJS)([])
 	  });
 	}), _defineProperty(_createReducer, _actionTypes2.default.REQUEST_WORDS, function (state, action) {
 	  return state.merge({
@@ -30711,9 +30712,10 @@
 	  var number = _ref.number;
 	  var text = _ref.text;
 	  var _onClick = _ref.onClick;
+	  var disabled = _ref.disabled;
 	  return _react2.default.createElement(
 	    "button",
-	    { style: { marginBottom: 10 }, className: "btn btn-default btn-block", onClick: function onClick() {
+	    { style: { marginBottom: 10 }, disabled: disabled, className: "btn btn-default btn-block", onClick: function onClick() {
 	        return _onClick(number);
 	      } },
 	    number,
@@ -30751,7 +30753,7 @@
 	          _react2.default.createElement(
 	            "div",
 	            { className: "col-lg-4" },
-	            _react2.default.createElement(Button, { number: "1", text: " ", onClick: onPress })
+	            _react2.default.createElement(Button, { number: "1", text: " ", disabled: true })
 	          ),
 	          _react2.default.createElement(
 	            "div",

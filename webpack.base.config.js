@@ -20,5 +20,11 @@ module.exports = {
         'NODE_ENV': '"debug"'
       }
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      'local': path.join(__dirname, 'local_modules')
+    },
+    extensions: ['', '.js', '.jsx', '.react.js', '.json', '.coffee']
+  }
 }

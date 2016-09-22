@@ -17,7 +17,8 @@ export const app = createReducer(appInitState, {
   },
 
   [AT.CLEAR_NUMBERS]: (state, action) => state.merge({
-    numbers: fromJS([])
+    numbers: fromJS([]),
+    words: fromJS([])
   }),
 
   [AT.REQUEST_WORDS]: (state, action) => state.merge({

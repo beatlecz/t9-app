@@ -1,4 +1,4 @@
-import {action} from '../modules/base-actions'
+import {action} from 'local/base-actions'
 import * as Api from './api'
 import AT from './action-types'
 

@@ -1,7 +1,7 @@
 import React, {PropTypes as pt, Component} from 'react'
 
-const Button = ({number, text, onClick}) => (
-  <button style={{marginBottom: 10}} className="btn btn-default btn-block" onClick={() => onClick(number)}>
+const Button = ({number, text, onClick, disabled}) => (
+  <button style={{marginBottom: 10}} disabled={disabled} className="btn btn-default btn-block" onClick={() => onClick(number)}>
     {number} <br />
     <small>{text}</small>
   </button>
@@ -15,7 +15,7 @@ class Keyboard extends Component {
       <div>
         <div className="row">
           <div className="col-lg-4">
-            <Button number="1" text="&nbsp;" onClick={onPress} />
+            <Button number="1" text="&nbsp;" disabled />
           </div>
           <div className="col-lg-4">
             <Button number="2" text="abc" onClick={onPress} />

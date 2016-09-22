@@ -1,4 +1,4 @@
-import Enum from '../modules/enum'
+import Enum from 'local/enum'
 
 export default Enum(
   'ADD_NUMBER',
