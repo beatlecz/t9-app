@@ -6,8 +6,7 @@ import * as reducers from './reducers'
 
 import App from './app'
 
-// See development console (in chrome) to see state changes
-let StoreApp = StoreAppCreator(reducers, {mode: process.env.NODE_ENV})
+let StoreApp = StoreAppCreator(reducers)
 let element = document.querySelector('#content')
 
 render(

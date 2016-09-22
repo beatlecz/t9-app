@@ -1,5 +1,8 @@
 import axios from 'axios'
 
 export function fetchWords(numStr) {
-  return axios.get('/api/words', {numStr})
+  return new Promise((resolve, reject) => {
+    axios.get('/api/words', {numStr})
+      .then(result => resolve(result.data.words))
+  })
 }

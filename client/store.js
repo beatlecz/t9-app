@@ -6,7 +6,7 @@ import Immutable, {Iterable} from 'immutable'
 
 const initialOpts = {
     initialState: Immutable.fromJS({}),
-    mode: 'debug'
+    mode: process.env.NODE_ENV
 }
 
 const stateTransformer = (state) => {

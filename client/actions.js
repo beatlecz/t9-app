@@ -1,5 +1,5 @@
 import {action} from '../modules/base-actions'
-import Api from './api'
+import * as Api from './api'
 import AT from './action-types'
 
 export function fetchWords(numStr) {
