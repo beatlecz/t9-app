@@ -3,7 +3,7 @@ var path = require('path')
 module.exports = {
   entry: './client/app.jsx',
   output: {
-    path: path.join(__dirname, 'public', 'js', 'build'),
+    path: path.join(__dirname, 'server', 'public', 'js', 'build'),
     publicPath: path.join(__dirname, 'public'),
     filename: 'client.js'
   },
