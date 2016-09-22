@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {render} from 'react-dom'
 
 class Main extends Component {
   render() {
@@ -11,8 +10,4 @@ class Main extends Component {
   }
 }
 
-let element = document.querySelector('#content')
-console.log(element)
-
-
-render(<Main />, element)
+export default Main

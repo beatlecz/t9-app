@@ -5,9 +5,16 @@ router.get('/', function(req, res, next) {
   res.json({status: 'OK'})
 })
 
-router.get('/convert', function(req, res, next) {
+router.get('/words', function(req, res, next) {
+  console.log(req.params)
+  
   res.json({
-    result: []
+    result: [
+      'ab',
+      'be',
+      'cs',
+      'uk'
+    ]
   })
 })
 
