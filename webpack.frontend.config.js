@@ -19,5 +19,8 @@ module.exports = {
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=100000&mimetype=image/svg+xml" }
     ]
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
   }
 }

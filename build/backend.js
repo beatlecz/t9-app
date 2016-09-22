@@ -102,7 +102,7 @@ require("source-map-support").install();
 	// START THE SERVER
 	// =============================================================================
 	
-	var port = process.env.PORT || 8080; // set our port
+	var port = ({"NODE_ENV":"production"}).PORT || 8080; // set our port
 	app.listen(port);
 	console.log('Listening on port ' + port);
 	/* WEBPACK VAR INJECTION */}.call(exports, "server"))

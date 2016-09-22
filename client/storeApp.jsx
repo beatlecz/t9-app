@@ -6,7 +6,7 @@ import Store from './store'
 export default function initStoreApp(reducers, opts) {
     let store = Store(reducers, opts)
 
-    return class StoreApp extends Component {
+    class StoreApp extends Component {
         render() {
             return (
                 <Provider store={store}>
@@ -15,4 +15,5 @@ export default function initStoreApp(reducers, opts) {
             )
         }
     }
+    return StoreApp
 }

@@ -3,7 +3,7 @@ import Immutable, {fromJS} from 'immutable'
 import AT from './action-types'
 
 const appInitState = fromJS({
-  words: [],
+  words: ['test', 'fest'],
   isFetching: false
 })
 
