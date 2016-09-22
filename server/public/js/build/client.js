@@ -54,7 +54,7 @@
 
 	var _reactDom = __webpack_require__(35);
 
-	var _storeApp = __webpack_require__(173);
+	var _storeApp = __webpack_require__(244);
 
 	var _storeApp2 = _interopRequireDefault(_storeApp);
 
@@ -26359,67 +26359,7 @@
 	module.exports = ReactDOMNullInputValuePropHook;
 
 /***/ },
-/* 173 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	exports.default = initStoreApp;
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRedux = __webpack_require__(174);
-
-	var _store = __webpack_require__(197);
-
-	var _store2 = _interopRequireDefault(_store);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	function initStoreApp(reducers, opts) {
-	    var store = (0, _store2.default)(reducers, opts);
-
-	    var StoreApp = function (_Component) {
-	        _inherits(StoreApp, _Component);
-
-	        function StoreApp() {
-	            _classCallCheck(this, StoreApp);
-
-	            return _possibleConstructorReturn(this, (StoreApp.__proto__ || Object.getPrototypeOf(StoreApp)).apply(this, arguments));
-	        }
-
-	        _createClass(StoreApp, [{
-	            key: 'render',
-	            value: function render() {
-	                return _react2.default.createElement(
-	                    _reactRedux.Provider,
-	                    { store: store },
-	                    this.props.children
-	                );
-	            }
-	        }]);
-
-	        return StoreApp;
-	    }(_react.Component);
-
-	    return StoreApp;
-	}
-
-/***/ },
+/* 173 */,
 /* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27990,66 +27930,7 @@
 
 
 /***/ },
-/* 197 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.default = configureStore;
-
-	var _reduxThunk = __webpack_require__(198);
-
-	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-	var _reduxLogger = __webpack_require__(199);
-
-	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
-
-	var _redux = __webpack_require__(181);
-
-	var _reduxImmutablejs = __webpack_require__(200);
-
-	var _immutable = __webpack_require__(34);
-
-	var _immutable2 = _interopRequireDefault(_immutable);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var initialOpts = {
-	  initialState: _immutable2.default.fromJS({}),
-	  mode: ("debug")
-	};
-
-	var stateTransformer = function stateTransformer(state) {
-	  if (_immutable.Iterable.isIterable(state)) return state.toJS();else return state;
-	};
-	// logger with convert of immutable
-	var loggerMiddleware = (0, _reduxLogger2.default)({
-	  stateTransformer: stateTransformer,
-	  duration: true,
-	  collapsed: true
-	});
-
-	var middlewares = [_reduxThunk2.default];
-
-	function configureStore(reducers) {
-	  var opts = arguments.length <= 1 || arguments[1] === undefined ? initialOpts : arguments[1];
-
-	  var rootReducer = (0, _reduxImmutablejs.combineReducers)(reducers);
-
-	  var newOpts = Object.assign(initialOpts, opts);
-
-	  if (opts.mode === 'debug') middlewares.push(loggerMiddleware);
-
-	  var createStoreWithMiddleware = _redux.applyMiddleware.apply(undefined, middlewares)(_redux.createStore);
-
-	  return createStoreWithMiddleware(rootReducer, newOpts.initialState);
-	}
-
-/***/ },
+/* 197 */,
 /* 198 */
 /***/ function(module, exports) {
 
@@ -28703,13 +28584,13 @@
 	          { className: 'row' },
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-lg-6' },
-	            _react2.default.createElement(_inputForm2.default, { numbers: numbers, onClear: clearNumbers }),
+	            { className: 'col-xs-6' },
+	            _react2.default.createElement(_inputForm2.default, { words: words, onClear: clearNumbers }),
 	            _react2.default.createElement(_keyboard2.default, { onPress: addNumber })
 	          ),
 	          _react2.default.createElement(
 	            'div',
-	            { className: 'col-lg-6' },
+	            { className: 'col-xs-6' },
 	            _react2.default.createElement(_wordsList2.default, { words: words })
 	          )
 	        )
@@ -30586,14 +30467,14 @@
 	    value: function render() {
 	      var _props = this.props;
 	      var onClear = _props.onClear;
-	      var numbers = _props.numbers;
+	      var words = _props.words;
 
-	      var numbersText = numbers.join('');
+	      var word = words.length > 0 ? words[0] : '';
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'input-group', style: { marginBottom: 10 } },
-	        _react2.default.createElement('input', { type: 'text', className: 'form-control', value: numbersText }),
+	        { className: 'input-group input-group-lg', style: { marginBottom: 10 } },
+	        _react2.default.createElement('input', { type: 'text', className: 'form-control', value: word }),
 	        _react2.default.createElement(
 	          'span',
 	          { className: 'input-group-btn' },
@@ -30613,9 +30494,12 @@
 	}(_react.Component);
 
 	InputForm.propTypes = {
-	  onClear: _react.PropTypes.func.isRequired
+	  onClear: _react.PropTypes.func.isRequired,
+	  words: _react.PropTypes.arrayOf(_react.PropTypes.string)
 	};
-	InputForm.defaultProps = {};
+	InputForm.defaultProps = {
+	  words: []
+	};
 
 	exports.default = InputForm;
 
@@ -30659,11 +30543,11 @@
 
 
 	      return _react2.default.createElement(
-	        "ul",
+	        "div",
 	        { className: "list-group" },
 	        words.map(function (word, i) {
 	          return _react2.default.createElement(
-	            "li",
+	            "a",
 	            { key: i, className: "list-group-item" },
 	            word
 	          );
@@ -30715,10 +30599,19 @@
 	  var disabled = _ref.disabled;
 	  return _react2.default.createElement(
 	    "button",
-	    { style: { marginBottom: 10 }, disabled: disabled, className: "btn btn-default btn-block", onClick: function onClick() {
+	    {
+	      style: { marginBottom: 10 },
+	      disabled: disabled,
+	      className: "btn btn-lg btn-primary btn-block",
+	      onClick: function onClick() {
 	        return _onClick(number);
-	      } },
-	    number,
+	      }
+	    },
+	    _react2.default.createElement(
+	      "b",
+	      null,
+	      number
+	    ),
 	    " ",
 	    _react2.default.createElement("br", null),
 	    _react2.default.createElement(
@@ -30752,17 +30645,17 @@
 	          { className: "row" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4" },
+	            { className: "col-xs-4" },
 	            _react2.default.createElement(Button, { number: "1", text: " ", disabled: true })
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4" },
+	            { className: "col-xs-4" },
 	            _react2.default.createElement(Button, { number: "2", text: "abc", onClick: onPress })
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4" },
+	            { className: "col-xs-4" },
 	            _react2.default.createElement(Button, { number: "3", text: "def", onClick: onPress })
 	          )
 	        ),
@@ -30771,17 +30664,17 @@
 	          { className: "row" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4" },
+	            { className: "col-xs-4" },
 	            _react2.default.createElement(Button, { number: "4", text: "ghi", onClick: onPress })
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4" },
+	            { className: "col-xs-4" },
 	            _react2.default.createElement(Button, { number: "5", text: "jkl", onClick: onPress })
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4" },
+	            { className: "col-xs-4" },
 	            _react2.default.createElement(Button, { number: "6", text: "mno", onClick: onPress })
 	          )
 	        ),
@@ -30790,17 +30683,17 @@
 	          { className: "row" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4" },
+	            { className: "col-xs-4" },
 	            _react2.default.createElement(Button, { number: "7", text: "pqrs", onClick: onPress })
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4" },
+	            { className: "col-xs-4" },
 	            _react2.default.createElement(Button, { number: "8", text: "tuv", onClick: onPress })
 	          ),
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4" },
+	            { className: "col-xs-4" },
 	            _react2.default.createElement(Button, { number: "9", text: "wxyz", onClick: onPress })
 	          )
 	        ),
@@ -30809,7 +30702,7 @@
 	          { className: "row" },
 	          _react2.default.createElement(
 	            "div",
-	            { className: "col-lg-4 col-lg-offset-4" },
+	            { className: "col-xs-4 col-xs-offset-4" },
 	            _react2.default.createElement(Button, { number: "0", text: "_", onClick: onPress })
 	          )
 	        )
@@ -30826,6 +30719,127 @@
 	Keyboard.defaultProps = {};
 
 	exports.default = Keyboard;
+
+/***/ },
+/* 244 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	exports.default = initStoreApp;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRedux = __webpack_require__(174);
+
+	var _store = __webpack_require__(245);
+
+	var _store2 = _interopRequireDefault(_store);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	function initStoreApp(reducers, opts) {
+	    var store = (0, _store2.default)(reducers, opts);
+
+	    var StoreApp = function (_Component) {
+	        _inherits(StoreApp, _Component);
+
+	        function StoreApp() {
+	            _classCallCheck(this, StoreApp);
+
+	            return _possibleConstructorReturn(this, (StoreApp.__proto__ || Object.getPrototypeOf(StoreApp)).apply(this, arguments));
+	        }
+
+	        _createClass(StoreApp, [{
+	            key: 'render',
+	            value: function render() {
+	                return _react2.default.createElement(
+	                    _reactRedux.Provider,
+	                    { store: store },
+	                    this.props.children
+	                );
+	            }
+	        }]);
+
+	        return StoreApp;
+	    }(_react.Component);
+
+	    return StoreApp;
+	}
+
+/***/ },
+/* 245 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = configureStore;
+
+	var _reduxThunk = __webpack_require__(198);
+
+	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+	var _reduxLogger = __webpack_require__(199);
+
+	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
+
+	var _redux = __webpack_require__(181);
+
+	var _reduxImmutablejs = __webpack_require__(200);
+
+	var _immutable = __webpack_require__(34);
+
+	var _immutable2 = _interopRequireDefault(_immutable);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var initialOpts = {
+	  initialState: _immutable2.default.fromJS({}),
+	  mode: ("debug")
+	};
+
+	var stateTransformer = function stateTransformer(state) {
+	  if (_immutable.Iterable.isIterable(state)) return state.toJS();else return state;
+	};
+	// logger with convert of immutable
+	var loggerMiddleware = (0, _reduxLogger2.default)({
+	  stateTransformer: stateTransformer,
+	  duration: true,
+	  collapsed: true
+	});
+
+	var middlewares = [_reduxThunk2.default];
+
+	function configureStore(reducers) {
+	  var opts = arguments.length <= 1 || arguments[1] === undefined ? initialOpts : arguments[1];
+
+	  var rootReducer = (0, _reduxImmutablejs.combineReducers)(reducers);
+
+	  var newOpts = Object.assign(initialOpts, opts);
+
+	  if (opts.mode === 'debug') middlewares.push(loggerMiddleware);
+
+	  var createStoreWithMiddleware = _redux.applyMiddleware.apply(undefined, middlewares)(_redux.createStore);
+
+	  return createStoreWithMiddleware(rootReducer, newOpts.initialState);
+	}
 
 /***/ }
 /******/ ]);

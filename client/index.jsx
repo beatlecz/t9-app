@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {fromJS} from 'immutable'
 import {render} from 'react-dom'
-import StoreAppCreator from './storeApp'
+import StoreAppCreator from 'local/storeApp'
 import * as reducers from './reducers'
 
 import App from './app'

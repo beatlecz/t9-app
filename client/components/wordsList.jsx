@@ -5,13 +5,13 @@ class WordsList extends Component {
     let {words} = this.props
 
     return (
-      <ul className="list-group">
+      <div className="list-group">
         {words.map((word, i) => (
-          <li key={i} className="list-group-item">
+          <a key={i} className="list-group-item">
             {word}
-          </li>
+          </a>
         ))}
-      </ul>
+      </div>
 
     )
   }

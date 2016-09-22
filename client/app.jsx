@@ -18,11 +18,11 @@ class Main extends Component {
         <h3>T9 App</h3>
         <hr />
         <div className="row">
-          <div className="col-lg-6">
-            <InputForm numbers={numbers} onClear={clearNumbers} />
+          <div className="col-xs-6">
+            <InputForm words={words} onClear={clearNumbers} />
             <Keyboard onPress={addNumber} />
           </div>
-          <div className="col-lg-6">
+          <div className="col-xs-6">
             <WordsList words={words} />
           </div>
         </div>

@@ -157,14 +157,6 @@ require("source-map-support").install();
 	
 	var _express2 = _interopRequireDefault(_express);
 	
-	var _fs = __webpack_require__(8);
-	
-	var _fs2 = _interopRequireDefault(_fs);
-	
-	var _path = __webpack_require__(2);
-	
-	var _path2 = _interopRequireDefault(_path);
-	
 	var _trieNode = __webpack_require__(9);
 	
 	var _trieNode2 = _interopRequireDefault(_trieNode);
@@ -173,29 +165,22 @@ require("source-map-support").install();
 	
 	var router = _express2.default.Router();
 	
+	
+	// load dictionary
+	var dic = _trieNode2.default.load('server/data/dictionary.txt');
+	
 	router.get('/', function (req, res, next) {
 	  res.json({ status: 'OK' });
 	});
 	
 	router.get('/words', function (req, res, next) {
-	  var dic = new _trieNode2.default();
-	  var fs = __webpack_require__(8);
+	  var words = [];
+	  try {
+	    words = dic.getSuggestions(req.query.numbers, 5);
+	  } catch (e) {}
 	
-	  fs.readFile('server/data/dictionary.txt', function (err, data) {
-	    if (err) throw err;
-	
-	    var lines = data.toString().split("\n");
-	    lines.forEach(function (word) {
-	      word = word.split('\t');
-	      if (word[1] !== '' && Number(word[0]) > 0) {
-	        dic.insert(word[1], Number(word[0]));
-	      }
-	    });
-	    var words = dic.getSuggestions(req.query.numbers, 5);
-	
-	    res.json({
-	      words: words
-	    });
+	  res.json({
+	    words: words
 	  });
 	});
 	
@@ -209,7 +194,7 @@ require("source-map-support").install();
 
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	
@@ -218,6 +203,16 @@ require("source-map-support").install();
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _path = __webpack_require__(2);
+	
+	var _path2 = _interopRequireDefault(_path);
+	
+	var _fs = __webpack_require__(8);
+	
+	var _fs2 = _interopRequireDefault(_fs);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
@@ -389,6 +384,23 @@ require("source-map-support").install();
 	  return TrieNode;
 	}();
 	
+	TrieNode.load = function (path) {
+	  var dic = new TrieNode();
+	
+	  _fs2.default.readFile(path, function (err, data) {
+	    if (err) throw err;
+	
+	    var lines = data.toString().split("\n");
+	    lines.forEach(function (word) {
+	      word = word.split('\t');
+	      if (word[1] !== '' && Number(word[0]) > 0) {
+	        dic.insert(word[1], Number(word[0]));
+	      }
+	    });
+	  });
+	
+	  return dic;
+	};
 	exports.default = TrieNode;
 
 /***/ },

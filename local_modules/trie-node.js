@@ -1,3 +1,6 @@
+import path from 'path'
+import fs from 'fs'
+
 const keys = {
   'a': 2, 'b': 2, 'c': 2,
   'd': 3, 'e': 3, 'f': 3,
@@ -9,7 +12,7 @@ const keys = {
   'w': 9, 'x': 9, 'y': 9, 'z': 9
 }
 
-export default class TrieNode {
+class TrieNode {
   constructor() {
     this.children = {}
     this.words = []
@@ -152,6 +155,22 @@ export default class TrieNode {
       }
     }
   }
-
-
 }
+TrieNode.load = function(path) {
+  let dic = new TrieNode()
+
+  fs.readFile(path, function(err, data) {
+    if(err) throw err;
+
+    var lines = data.toString().split("\n");
+    lines.forEach(word => {
+      word = word.split('\t')
+      if (word[1] !== '' && Number(word[0]) > 0) {
+        dic.insert(word[1], Number(word[0]))
+      }
+    })
+  })
+
+  return dic
+}
+export default TrieNode

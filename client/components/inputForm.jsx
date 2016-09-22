@@ -2,12 +2,12 @@ import React, {PropTypes as pt, Component} from 'react'
 
 class InputForm extends Component {
   render() {
-    let {onClear, numbers} = this.props
-    let numbersText = numbers.join('')
+    let {onClear, words} = this.props
+    let word = words.length > 0 ? words[0] : ''
 
     return (
-      <div className="input-group" style={{marginBottom: 10}}>
-        <input type="text" className="form-control" value={numbersText} />
+      <div className="input-group input-group-lg" style={{marginBottom: 10}}>
+        <input type="text" className="form-control" value={word} />
         <span className="input-group-btn">
           <button className="btn btn-default" type="button" onClick={() => onClear()}>Clear</button>
         </span>
@@ -17,9 +17,11 @@ class InputForm extends Component {
 }
 
 InputForm.propTypes = {
-  onClear: pt.func.isRequired
+  onClear: pt.func.isRequired,
+  words: pt.arrayOf(pt.string)
 }
 InputForm.defaultProps = {
+  words: []
 }
 
 export default InputForm
