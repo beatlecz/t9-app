@@ -54,7 +54,7 @@ gulp.task('build-frontend', function(done) {
   webpack(frontendConfig).run(onBuild(done))
 })
 gulp.task('watch-frontend', function() {
-  webpack(frontendConfig).watch(100, onBuild(), {color: true, verbose: false})
+  webpack(frontendConfig).watch(100, onBuild())
 })
 
 gulp.task('run', ['watch-server', 'watch-frontend'], function() {

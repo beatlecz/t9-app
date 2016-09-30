@@ -157,7 +157,7 @@ require("source-map-support").install();
 	
 	var _express2 = _interopRequireDefault(_express);
 	
-	var _trieNode = __webpack_require__(9);
+	var _trieNode = __webpack_require__(8);
 	
 	var _trieNode2 = _interopRequireDefault(_trieNode);
 	
@@ -188,12 +188,6 @@ require("source-map-support").install();
 
 /***/ },
 /* 8 */
-/***/ function(module, exports) {
-
-	module.exports = require("fs");
-
-/***/ },
-/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -208,7 +202,7 @@ require("source-map-support").install();
 	
 	var _path2 = _interopRequireDefault(_path);
 	
-	var _fs = __webpack_require__(8);
+	var _fs = __webpack_require__(9);
 	
 	var _fs2 = _interopRequireDefault(_fs);
 	
@@ -402,6 +396,12 @@ require("source-map-support").install();
 	  return dic;
 	};
 	exports.default = TrieNode;
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	module.exports = require("fs");
 
 /***/ },
 /* 10 */

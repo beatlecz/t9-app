@@ -12,7 +12,6 @@ class WordsList extends Component {
           </a>
         ))}
       </div>
-
     )
   }
 }
